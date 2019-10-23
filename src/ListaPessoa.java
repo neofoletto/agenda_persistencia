@@ -50,8 +50,9 @@ public class ListaPessoa {
 		return false;
 	}
 
-	public void inserirPessoaLista(List<Pessoa> listaPessoa) {
-		this.listaPessoa = listaPessoa;
+	public void inserirPessoaLista(String fileName) {
+		this.listaPessoa = pers.ler(fileName);
+		pers.gravar(this.listaPessoa, fileName);
 	}
 
 	public boolean removerPessoaLista(String nome, String arquivoNome) throws IOException {

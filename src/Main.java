@@ -33,7 +33,7 @@ public class Main {
 //		extName = imput.nextLine();
 		
 		listaPessoa = new ListaPessoa(extName);
-		listaPessoa.inserirPessoaLista(new PersistenciaCSV().ler(fileName));
+		listaPessoa.inserirPessoaLista(fileName);
 
 		while (true) {
 			System.out.println("\n** Menu **");

@@ -6,16 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
-
-import util.DataUtil;
 
 public class ManipCSV {
-
-	private int contador = 0;
 
 	public ManipCSV() {
 	}
@@ -39,7 +33,6 @@ public class ManipCSV {
 					, pessoa.getEmail()
 			    , pessoa.getTelefone());
 		}
-
 		arq.close();
 	}
 
@@ -63,8 +56,6 @@ public class ManipCSV {
 				lista.add(pessoa);
 				linha = lerArq.readLine();
 			}
-			if (!lista.isEmpty())
-				this.contador = lista.size(); // auto increment index
 			arq.close();
 		} catch (Exception e) {
 			System.out.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());

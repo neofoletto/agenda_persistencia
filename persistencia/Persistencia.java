@@ -1,6 +1,8 @@
-package src;
+package persistencia;
 
 import java.util.List;
+
+import src.Pessoa;
 
 public class Persistencia {
 

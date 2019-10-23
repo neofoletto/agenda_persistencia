@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import persistencia.PersistenciaCSV;
 import util.DataUtil;
 
 public class ListaPessoa {
@@ -16,14 +17,14 @@ public class ListaPessoa {
 	}
 
 	public void gravar(String arquivoNome) throws IOException {
-		new ManipCSV().gravar(this.listaPessoa, arquivoNome);
+		new PersistenciaCSV().gravar(this.listaPessoa, arquivoNome);
 	}
 	
 	public boolean inserirPessoa(Pessoa pessoa, String arquivoNome) throws IOException {
 		if (!pessoa.equals(null)) {
 			pessoa.setCodigo(returnCodigoListaPessoa());
 			this.listaPessoa.add(pessoa);
-			new ManipCSV().gravar(this.listaPessoa, arquivoNome);
+			new PersistenciaCSV().gravar(this.listaPessoa, arquivoNome);
 			return true;
 		}
 		return false;
@@ -39,7 +40,7 @@ public class ListaPessoa {
 			this.listaPessoa.remove(index);
 		else 
 			return false;
-		new ManipCSV().gravar(listaPessoa, arquivoNome);
+		new PersistenciaCSV().gravar(listaPessoa, arquivoNome);
 		return true;
 	}
 

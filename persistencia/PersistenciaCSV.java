@@ -1,4 +1,4 @@
-package src;
+package persistencia;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ManipCSV {
+import src.Pessoa;
 
-	public ManipCSV() {
+public class PersistenciaCSV {
+
+	public PersistenciaCSV() {
 	}
 
 	private String setNome(String nome) {

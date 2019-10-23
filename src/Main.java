@@ -2,25 +2,29 @@ package src;
 
 import java.io.IOException;
 import java.util.Scanner;
+
+import persistencia.Gravacao;
+import persistencia.Persistencia;
+import persistencia.PersistenciaCSV;
 import util.Utils;
 
 /**
- * 
  * @author neo
- *
- *         Realizar CRUD
  * 
  */
 public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner imput = new Scanner(System.in);
 		ListaPessoa listaPessoa = new ListaPessoa();
+		
+		PersistenciaCSV csv = new PersistenciaCSV();
+		Persistencia pers = new Persistencia((Gravacao) csv);
 
 		String fileName = "pop"; // nome do arquivo
 
 //		System.out.print("Insira nome do arquivo: ");
 //		fileName = imput.nextLine();
-		listaPessoa.inserirPessoaLista(new ManipCSV().ler(fileName));
+		listaPessoa.inserirPessoaLista(new PersistenciaCSV().ler(fileName));
 
 		while (true) {
 			System.out.println("\n** Menu **");
@@ -38,13 +42,6 @@ public class Main {
 				System.out.println("Programa finalizado");
 				return;
 
-			/**
-			 * private int codigo; 
-			 * private String nome; 
-			 * private String email; 
-			 * private Date dataNascimento; 
-			 * private String telefone;
-			 */
 			case 1: // Incluir
 				imput.nextLine();
 				Pessoa pessoa = new Pessoa();
@@ -65,7 +62,6 @@ public class Main {
 				break;
 				
 			case 2: // Alterar
-//				imput.nextLine();
 				System.out.println("** Alterar Pessoa **");
 				System.out.println(listaPessoa.retornaListaCompleta()); // retorna toda a lista
 				System.out.print("Informe código da Pessoa a ser alterada: ");
@@ -120,7 +116,6 @@ public class Main {
 				break;
 
 			case 6: // Consulta por domínio de e-mail
-//			imput.nextLine();
 				System.out.println("** Consulta por domínio de e-mail **");
 				System.out.println(listaPessoa.retornaListaCompletaDeDominio());
 				System.out.print("Informe domínio: ");
@@ -135,6 +130,7 @@ public class Main {
 				break;
 
 			default:
+				System.out.println("Opção inválida.");
 				break;
 			}
 		}

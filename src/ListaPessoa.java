@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import persistencia.Gravacao;
+import persistencia.Persistencia;
 import persistencia.PersistenciaCSV;
 import util.DataUtil;
 
@@ -14,6 +16,13 @@ public class ListaPessoa {
 
 	public ListaPessoa() {
 		this.listaPessoa = new ArrayList<Pessoa>();
+		PersistenciaCSV csv = new PersistenciaCSV();
+//	PersistenciaXML xml = new PersistenciaXML();
+//	PersistenciaHTML html = new PersistenciaHTML();
+//	PersistenciaJSON json = new PersistenciaJSON();
+		Persistencia pers = new Persistencia((Gravacao) csv);
+
+		
 	}
 
 	public void gravar(String arquivoNome) throws IOException {

@@ -6,6 +6,9 @@ import java.util.Scanner;
 import persistencia.Gravacao;
 import persistencia.Persistencia;
 import persistencia.PersistenciaCSV;
+import persistencia.PersistenciaHTML;
+import persistencia.PersistenciaJSON;
+import persistencia.PersistenciaXML;
 import util.Utils;
 
 /**
@@ -15,12 +18,10 @@ import util.Utils;
 public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner imput = new Scanner(System.in);
-		ListaPessoa listaPessoa = new ListaPessoa();
+		// csv, html, json, xml
+		ListaPessoa listaPessoa = new ListaPessoa(); 
 		
-		PersistenciaCSV csv = new PersistenciaCSV();
-		Persistencia pers = new Persistencia((Gravacao) csv);
-
-		String fileName = "pop"; // nome do arquivo
+		String fileName = "pop1"; // nome do arquivo
 
 //		System.out.print("Insira nome do arquivo: ");
 //		fileName = imput.nextLine();

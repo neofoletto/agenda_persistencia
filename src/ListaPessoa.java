@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import util.DataUtil;
+
 public class ListaPessoa {
 
 	private List<Pessoa> listaPessoa;
@@ -87,6 +89,15 @@ public class ListaPessoa {
 		}
 		
 		return builder.toString();
+	}
+	
+	public String retornaListaCompletaAniversarioDoMes(int mes) {
+		StringBuilder builder = new StringBuilder("\n");
+		for (Pessoa pessoa : this.listaPessoa) 
+			if (DataUtil.MesEmInteiro(pessoa.getDataNascimento()) == (mes ))
+				builder.append(pessoa).append("\n");
+		
+		return (!builder.toString().isEmpty()) ? builder.toString() : "Não há aniversariantes neste mês.";
 	}
 
 	private int returnCodigoListaPessoa() {

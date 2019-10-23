@@ -28,7 +28,7 @@ public class Main {
 			System.out.println("2- Alterar");
 			System.out.println("3- Excluir");
 			System.out.println("4- Consulta por Nome");
-//			System.out.println("5- Consulta por Mês do aniversariante");
+			System.out.println("5- Consulta por Mês do aniversariante");
 			System.out.println("6- Consulta por domínio de e-mail");		
 			System.out.println("7- Retorna lista completa");
 			System.out.println("0- Sair");
@@ -110,6 +110,12 @@ public class Main {
 				break;
 
 			case 5: // Consulta por Mês do aniversariante
+				System.out.println("** Consulta por Mês do aniversariante **");
+				System.out.print("Informe mês: ");
+				int mes = validaImputInteger(imput);
+				while (mes < 0 || mes > 12)
+					mes = validaImputInteger(imput);
+				System.out.println(listaPessoa.retornaListaCompletaAniversarioDoMes(mes));
 				
 				break;
 

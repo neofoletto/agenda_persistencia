@@ -55,7 +55,7 @@ public class Pessoa {
 	}
 
 	public boolean setDataNascimento(String dataNascimento) {
-		if (new DataUtil().validaData(dataNascimento)) {
+		if (DataUtil.validaData(dataNascimento)) {
 			this.dataNascimento = new DataUtil().retornaDateFormatada(dataNascimento);
 			return true;
 		}

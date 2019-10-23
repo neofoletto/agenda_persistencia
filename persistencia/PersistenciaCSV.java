@@ -11,7 +11,7 @@ import java.util.List;
 
 import src.Pessoa;
 
-public class PersistenciaCSV {
+public class PersistenciaCSV implements Gravacao {
 
 	public PersistenciaCSV() {
 	}
@@ -23,27 +23,35 @@ public class PersistenciaCSV {
 		return "none.csv";
 	}
 
-	public void gravar(List<Pessoa> lista, String arquivoNome) throws IOException {
-		FileWriter arq = new FileWriter(setNome(arquivoNome));
-		PrintWriter gravarArq = new PrintWriter(arq);
+	public boolean gravar(List<Pessoa> lista, String fileName) {
+		FileWriter arq = null;
+		try {
+			arq = new FileWriter(setNome(fileName));
+			PrintWriter gravarArq = new PrintWriter(arq);
 
-		for (Pessoa pessoa : lista) {
-			gravarArq.printf("%d;%s;%s;%s;%s\n"
-					, pessoa.getCodigo()
-					, pessoa.getNome()
-					, pessoa.getDataNascimento().getTime()
-					, pessoa.getEmail()
-			    , pessoa.getTelefone());
+			for (Pessoa pessoa : lista) {
+				gravarArq.printf("%d;%s;%s;%s;%s\n"
+						, pessoa.getCodigo()
+						, pessoa.getNome()
+						, pessoa.getDataNascimento().getTime()
+						, pessoa.getEmail()
+				    , pessoa.getTelefone());
+			}
+			arq.close();
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		arq.close();
+		return false;
 	}
 
-	public List<Pessoa> ler(String arquivoNome) {
-		setNome(arquivoNome);
+	public List<Pessoa> ler(String fileName) {
+		setNome(fileName);
 		List<Pessoa> lista = null;
 		try {
 			Pessoa pessoa;
-			FileReader arq = new FileReader(setNome(arquivoNome));
+			FileReader arq = new FileReader(setNome(fileName));
 			BufferedReader lerArq = new BufferedReader(arq);
 			String linha = lerArq.readLine();
 			lista = new ArrayList<Pessoa>();

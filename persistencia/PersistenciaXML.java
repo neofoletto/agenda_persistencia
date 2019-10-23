@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class PersistenciaXML {
+public class PersistenciaXML implements Gravacao {
 
 	private Element config = new Element("Agenda");
 	private Pessoa pessoa;

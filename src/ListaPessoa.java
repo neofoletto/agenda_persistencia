@@ -8,32 +8,43 @@ import java.util.ListIterator;
 import persistencia.Gravacao;
 import persistencia.Persistencia;
 import persistencia.PersistenciaCSV;
+import persistencia.PersistenciaHTML;
+import persistencia.PersistenciaJSON;
+import persistencia.PersistenciaXML;
 import util.DataUtil;
 
 public class ListaPessoa {
 
+	private Persistencia pers = null;
 	private List<Pessoa> listaPessoa;
 
-	public ListaPessoa() {
-		this.listaPessoa = new ArrayList<Pessoa>();
-		PersistenciaCSV csv = new PersistenciaCSV();
-//	PersistenciaXML xml = new PersistenciaXML();
-//	PersistenciaHTML html = new PersistenciaHTML();
-//	PersistenciaJSON json = new PersistenciaJSON();
-		Persistencia pers = new Persistencia((Gravacao) csv);
-
-		
+	public ListaPessoa(String extensaoArquivo) {
+//		this.listaPessoa = new ArrayList<Pessoa>();
+		switch (extensaoArquivo.toLowerCase()) {
+		case "csv":
+			pers = new Persistencia(new PersistenciaCSV());
+			break;
+		case "xml":
+			pers = new Persistencia((Gravacao) new PersistenciaXML());
+			break;
+		case "html":
+			pers = new Persistencia((Gravacao) new PersistenciaHTML());
+			break;
+		case "json":
+			pers = new Persistencia((Gravacao) new PersistenciaJSON());
+			break;
+		}
 	}
 
 	public void gravar(String arquivoNome) throws IOException {
-		new PersistenciaCSV().gravar(this.listaPessoa, arquivoNome);
+		pers.gravar(this.listaPessoa, arquivoNome);
 	}
 	
 	public boolean inserirPessoa(Pessoa pessoa, String arquivoNome) throws IOException {
 		if (!pessoa.equals(null)) {
 			pessoa.setCodigo(returnCodigoListaPessoa());
 			this.listaPessoa.add(pessoa);
-			new PersistenciaCSV().gravar(this.listaPessoa, arquivoNome);
+			pers.gravar(this.listaPessoa, arquivoNome);
 			return true;
 		}
 		return false;
@@ -49,7 +60,7 @@ public class ListaPessoa {
 			this.listaPessoa.remove(index);
 		else 
 			return false;
-		new PersistenciaCSV().gravar(listaPessoa, arquivoNome);
+		pers.gravar(listaPessoa, arquivoNome);
 		return true;
 	}
 
@@ -111,7 +122,9 @@ public class ListaPessoa {
 	}
 
 	private int returnCodigoListaPessoa() {
-		return listaPessoa.get(listaPessoa.size() - 1).getCodigo() + 1;
+		if (this.listaPessoa != null)
+			return this.listaPessoa.get(listaPessoa.size() - 1).getCodigo() + 1;
+		return 0;
 	}
 
 	public Integer retornaIndexDaPessoaNaLista(String nome) {

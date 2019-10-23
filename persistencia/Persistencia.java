@@ -12,11 +12,11 @@ public class Persistencia {
 		this.g = g;
 	}
 	
-	public boolean gravar(List<Pessoa> lista) {
-		return g.gravar(lista);
+	public boolean gravar(List<Pessoa> lista, String fileName) {
+		return g.gravar(lista, fileName);
 	}
 	
-	public List<Pessoa> ler() {
-		return g.ler();
+	public List<Pessoa> ler(String fileName) {
+		return g.ler(fileName);
 	}
 }

@@ -13,7 +13,7 @@ import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-public class PersistenciaJSON {
+public class PersistenciaJSON implements Gravacao{
 
 	private GsonBuilder builder;
 	@SuppressWarnings("unused")

@@ -19,12 +19,20 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		Scanner imput = new Scanner(System.in);
 		// csv, html, json, xml
-		ListaPessoa listaPessoa = new ListaPessoa(); 
+		ListaPessoa listaPessoa; 
 		
-		String fileName = "pop1"; // nome do arquivo
+		String fileName = "pop"; // nome do arquivo
+		String extName = "csv"; // extensao do arquivo
+//		String extName = "xml"; // extensao do arquivo
+//		String extName = "json"; // extensao do arquivo
+//		String extName = "html"; // extensao do arquivo
 
 //		System.out.print("Insira nome do arquivo: ");
 //		fileName = imput.nextLine();
+//		System.out.print("Insira nome do arquivo: ");
+//		extName = imput.nextLine();
+		
+		listaPessoa = new ListaPessoa(extName);
 		listaPessoa.inserirPessoaLista(new PersistenciaCSV().ler(fileName));
 
 		while (true) {
@@ -44,7 +52,6 @@ public class Main {
 				return;
 
 			case 1: // Incluir
-				imput.nextLine();
 				Pessoa pessoa = new Pessoa();
 				System.out.println("** Incluir Pessoa **");
 				System.out.print("Informe nome: ");

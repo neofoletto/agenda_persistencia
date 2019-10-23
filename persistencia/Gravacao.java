@@ -6,6 +6,6 @@ import src.Pessoa;
 
 public interface Gravacao {
 
-	public boolean gravar(List<Pessoa> lista);
-	public List<Pessoa> ler();
+	public boolean gravar(List<Pessoa> lista, String fileName);
+	public List<Pessoa> ler(String fileName);
 }

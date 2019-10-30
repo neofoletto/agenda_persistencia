@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import src.Pessoa;
+import main.Pessoa;
 import util.DataUtil;
 
 public class PersistenciaHTML implements Gravacao {

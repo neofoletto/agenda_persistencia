@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.reflect.TypeToken;
 
-import src.Pessoa;
+import main.Pessoa;
 
 import java.lang.reflect.Type;
 import com.google.gson.Gson;

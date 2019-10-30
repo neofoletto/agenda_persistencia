@@ -2,7 +2,7 @@ package persistencia;
 
 import java.util.List;
 
-import src.Pessoa;
+import main.Pessoa;
 
 public interface Gravacao {
 

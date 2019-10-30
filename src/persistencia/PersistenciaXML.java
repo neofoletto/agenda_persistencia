@@ -6,7 +6,7 @@ import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
 
-import src.Pessoa;
+import main.Pessoa;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;

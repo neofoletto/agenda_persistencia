@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import src.Pessoa;
+import main.Pessoa;
 
 public class PersistenciaCSV implements Gravacao {
 
